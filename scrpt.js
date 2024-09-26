@@ -12,21 +12,22 @@ d(\.\d+)? >> This is the valid formation for input
 //Creating function that uses Nominatim Search API : 
 
 function searchMap(){
+
+   document.getElementById("warn").innerHTML="";
     const lat = parseFloat(document.getElementById("lat").value);
     const lon = parseFloat(document.getElementById("lon").value);
 
     //Regular expressions for LAT & LON
     const latRegexp = /^([+-]?([1-8]?\d(\.\d+)?|90(\.0+)?))$/; 
-    const lonRegexp =/ ^([+-]?((1[0-7]\d|[1-9]?\d)(\.\d+)?|180(\.0+)?))$/;
+    const lonRegexp = /^([+-]?((1[0-7]\d|[1-9]?\d)(\.\d+)?|180(\.0+)?))$/;
     const apiReverse = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
 
     if(isNaN(lat) || isNaN(lon)){
         document.getElementById("warn").innerHTML="Invalid Input";
     }
 
-
-
- if(latRegexp.test(lat) && lonRegexp.test(lon)){
+ if( latRegexp.test(lat) && lonRegexp.test(lon)){
+   
     fetch(apiReverse,{   //Request from nominatim API to query the endpoit ( users location).
        method: 'GET',  //Search operator that is used for data gaining.
        headers: {      // Expecting that the response will arrive in JSON format.
@@ -44,7 +45,8 @@ function searchMap(){
           }
         }
         return response.json()}) //Return the json response
-    .then(data =>{                                                          //Pass json data into the modal
+    .then(data =>{  
+      document.getElementById("warn").innerHTML="Location Found.";                                                        //Pass json data into the modal
        document.getElementById("result").innerHTML = JSON.stringify (data, null, 4);  //Make the Json format more readable
     })
     .catch(error=>{
@@ -53,14 +55,16 @@ function searchMap(){
     })
 
    //open modal
-   document.querySelector('.msg').style.display='flex'
+   document.querySelector('.msg').style.display='flex';
 }else{
-    return res.status(400).json({ error: 'Error 400- Bad Request' }); //In case user put valid
+     //In case user put valid
+     document.querySelector('.msg').style.display='flex';
+     document.getElementById("warn").innerHTML="Invalid Input";
+     document.getElementById("warn").style.color="red";
+     document.getElementById("result").innerHTML="Error 400 - Bad Request";
 }
-
- //close modal 
- function closeModal(){
-  document.querySelector('.msg').style.display='none';
- }
-
 }
+//close modal 
+function closeModal(){
+   document.querySelector('.msg').style.display='none';
+  }
