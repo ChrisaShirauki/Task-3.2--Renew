@@ -1,0 +1,99 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Merriweather", sans-serif;
+    color: black;
+}
+
+body{
+    height: 100vh;
+    background: url(map.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+
+}
+
+
+.container{
+    height: 470px;
+    width: 400px;
+    border-radius: 7px;
+    background:rgba(247, 248, 247, 0.74);
+    border: 2px solid #023315;
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    
+}
+
+.container .wrapper label{
+  font-weight: 600;
+  margin-top: 45px;
+}
+
+.container .wrapper input{
+    margin-top: 10px;
+}
+
+.container .wrapper button{
+    font-weight: 600;
+    width: 60%;
+    margin-top: 25px;
+    border: none;
+    background-color: rgb(6, 136, 6);
+}
+
+.container .wrapper button:hover{
+    background: #175f03;
+}
+
+
+.msg{
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    width: 600px;
+    height: 500px;
+    z-index: 40;
+    padding: 10px;
+    border-radius: 7px;
+    text-align: center;
+    box-sizing: border-box;
+    display: none;
+}
+
+ p{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #175f03;
+    font-weight: 500;
+}
+
+.msg .close-btn{
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  width: 35px;
+  height: 35px;
+  background: #175f03;
+  color: aliceblue;
+  font-size: 25px;
+  font: 600;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+
