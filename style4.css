@@ -94,6 +94,17 @@ body{
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    .container {
+        margin: 0 10px 25px;
+    }
+}
 
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        font-size: 14px;
+    }
+}
 
 
